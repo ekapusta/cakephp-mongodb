@@ -1307,16 +1307,16 @@ class MongodbSource extends DboSource {
 	}
 
 
-
 /**
  * Prepares a value, or an array of values for database queries by quoting and escaping them.
  *
  * @param mixed $data A value or an array of values to prepare.
  * @param string $column The column into which this data will be inserted
+ * @param bool $null Column allows NULL values
  * @return mixed Prepared value or array of values.
  * @access public
  */
-	public function value($data, $column = null) {
+	public function value($data, $column = null, $null = true) {
 		if (is_array($data) && !empty($data)) {
 			return array_map(
 				array(&$this, 'value'),
