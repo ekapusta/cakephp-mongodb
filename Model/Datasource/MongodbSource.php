@@ -192,7 +192,7 @@ class MongodbSource extends DboSource {
 				$class = 'Mongo';
 			}
 
-			if (isset($this->config['replicaset']) && count($this->config['replicaset']) === 2) {
+			if (isset($this->config['replicaset']['host']) && isset($this->config['replicaset']['options'])) {
 				$this->connection = new $class($this->config['replicaset']['host'], $this->config['replicaset']['options']);
 			} else if ($this->_driverVersion >= '1.3.0') {
 				$this->connection = new $class($host);
